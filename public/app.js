@@ -1,4 +1,4 @@
-/* Note Taker (18.2.6)
+/* Translator (18.2.6)
  * front-end
  * ==================== */
  var searchQuery;
