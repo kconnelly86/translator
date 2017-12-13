@@ -59,8 +59,6 @@ $(document).on("click", "#makenew", function() {
     url: queryAPI,
     // On a successful call, clear the #results section
     success: function(response) {
-       console.log("hello");
-       console.log("response");
        console.log(response);
       // console.log("response");
       //console.log(response);
