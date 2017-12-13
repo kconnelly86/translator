@@ -50,6 +50,7 @@ app.post("/submit", function(req, res) {
     // Otherwise, send the note back to the browser
     // This will fire off the success function of the ajax request
     else {
+      console.log(saved);
       res.send(saved);
     }
   });

@@ -1,6 +1,8 @@
 /* Note Taker (18.2.6)
  * front-end
  * ==================== */
+ var searchQuery;
+ var queryAPI;
 
 // Loads results onto the page
 function getResults() {
@@ -22,6 +24,7 @@ getResults();
 
 // When the #makenew button is clicked
 $(document).on("click", "#makenew", function() {
+
   // AJAX POST call to the submit route on the server
   // This will take the data from the form and send it to the server
   $.ajax({
@@ -36,18 +39,42 @@ $(document).on("click", "#makenew", function() {
   })
   // If that API call succeeds, add the title and a delete button for the note to the page
   .done(function(data) {
+  
     // Add the title and delete button to the #results section
     $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
       data._id + ">" + data.title + "</span><span class=deleter>X</span></p>");
     // Clear the note and title inputs on the page
     $("#translation").val("");
     $("#translate").val("");
+   
+
+
+    
+    
+    searchQuery = data.title;
+    queryAPI = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDfyQpiTmaKJG9ri-xKSX_wnG5f2MUY6TY&target=es&q=" + searchQuery;
+    $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: queryAPI,
+    // On a successful call, clear the #results section
+    success: function(response) {
+       console.log("hello");
+       console.log("response");
+       console.log(response);
+      // console.log("response");
+      //console.log(response);
+      console.log(response.data.translations[0].translatedText);
+      $("#translation").text(response.data.translations[0].translatedText);
+    }
+  });
   }
   );
 });
 
 // When the #clearall button is pressed
 $("#clearall").on("click", function() {
+
   // Make an AJAX GET request to delete the notes from the db
   $.ajax({
     type: "GET",
