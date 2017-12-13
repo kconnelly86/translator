@@ -29,8 +29,8 @@ $(document).on("click", "#makenew", function() {
     dataType: "json",
     url: "/submit",
     data: {
-      title: $("#title").val(),
-      note: $("#note").val(),
+      title: $("#translate").val(),
+      note: $("#translation").val(),
       created: Date.now()
     }
   })
@@ -40,8 +40,8 @@ $(document).on("click", "#makenew", function() {
     $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
       data._id + ">" + data.title + "</span><span class=deleter>X</span></p>");
     // Clear the note and title inputs on the page
-    $("#note").val("");
-    $("#title").val("");
+    $("#translation").val("");
+    $("#translate").val("");
   }
   );
 });
@@ -76,8 +76,8 @@ $(document).on("click", ".deleter", function() {
       // Remove the p-tag from the DOM
       selected.remove();
       // Clear the note and title inputs
-      $("#note").val("");
-      $("#title").val("");
+      $("#translation").val("");
+      $("#translate").val("");
       // Make sure the #actionbutton is submit (in case it's update)
       $("#actionbutton").html("<button id='makenew'>Submit</button>");
     }
@@ -95,8 +95,8 @@ $(document).on("click", ".dataTitle", function() {
     url: "/find/" + selected.attr("data-id"),
     success: function(data) {
       // Fill the inputs with the data that the ajax call collected
-      $("#note").val(data.note);
-      $("#title").val(data.title);
+      $("#translation").val(data.note);
+      $("#translate").val(data.title);
       // Make the #actionbutton an update button, so user can
       // Update the note s/he chooses
       $("#actionbutton").html("<button id='updater' data-id='" + data._id + "'>Update</button>");
@@ -117,14 +117,14 @@ $(document).on("click", "#updater", function() {
     url: "/update/" + selected.attr("data-id"),
     dataType: "json",
     data: {
-      title: $("#title").val(),
-      note: $("#note").val()
+      title: $("#translate").val(),
+      note: $("#translation").val()
     },
     // On successful call
     success: function(data) {
       // Clear the inputs
-      $("#note").val("");
-      $("#title").val("");
+      $("#translation").val("");
+      $("#translate").val("");
       // Revert action button to submit
       $("#actionbutton").html("<button id='makenew'>Submit</button>");
       // Grab the results from the db again, to populate the DOM
