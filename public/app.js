@@ -4,6 +4,7 @@
  var searchQuery;
  var queryAPI;
  var lang;
+ var theTranslation;
 
 // Loads results onto the page
 function getResults() {
@@ -28,31 +29,12 @@ $(document).on("click", "#makenew", function() {
 
   // AJAX POST call to the submit route on the server
   // This will take the data from the form and send it to the server
-  $.ajax({
-    type: "POST",
-    dataType: "json",
-    url: "/submit",
-    data: {
-      translate: $("#translate").val(),
-      translation: $("#translation").val(),
-      created: Date.now()
-    }
-  })
-  // If that API call succeeds, add the translate and a delete button for the translation to the page
-  .done(function(data) {
-  
-    // Add the translate and delete button to the #results section
-    $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='datatranslate' data-id=" +
-      data._id + ">" + data.translate + "</span><span class=deleter>X</span></p>");
-    // Clear the translation and translate inputs on the page
-    $("#translation").val("");
-    $("#translate").val("");
-   
 
 
-    
-    
-    searchQuery = data.translate;
+
+
+
+    searchQuery = $("#translate").val();
     queryAPI = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDfyQpiTmaKJG9ri-xKSX_wnG5f2MUY6TY&target=" + lang +"&q=" + searchQuery;
     $.ajax({
     type: "GET",
@@ -63,12 +45,36 @@ $(document).on("click", "#makenew", function() {
        console.log(response);
       // console.log("response");
       //console.log(response);
+      theTranslation = response.data.translations[0].translatedText;
       console.log(response.data.translations[0].translatedText);
       $("#translation").text(response.data.translations[0].translatedText);
     }
-  });
-  }
-  );
+}).done(function(response) {
+
+     $.ajax({
+       type: "POST",
+       dataType: "json",
+       url: "/submit",
+       data: {
+         translate: $("#translate").val(),
+         translation: theTranslation,
+         created: Date.now()
+       }
+     })
+     // If that API call succeeds, add the translate and a delete button for the translation to the page
+     .done(function(data) {
+
+       // Add the translate and delete button to the #results section
+       $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='datatranslate' data-id=" +
+         data._id + ">" + data.translate + "</span><span class=deleter>X</span></p>");
+       // Clear the translation and translate inputs on the page
+       $("#translation").val("");
+       // $("#translate").val("");
+   }
+   );
+
+});
+
 });
 
 
@@ -128,11 +134,12 @@ $(document).on("click", ".datatranslate", function() {
     url: "/find/" + selected.attr("data-id"),
     success: function(data) {
       // Fill the inputs with the data that the ajax call collected
-      $("#translation").val(data.translation);
+      $("#translation").text(data.translation);
+      console.log("data.translation: " + data.translation);
       $("#translate").val(data.translate);
       // Make the #actionbutton an update button, so user can
       // Update the translation s/he chooses
-      $("#actionbutton").html("<button id='updater' data-id='" + data._id + "'>Update</button>");
+      //$("#actionbutton").html("<button id='updater' data-id='" + data._id + "'>Update</button>");
     }
   });
 });
@@ -165,5 +172,3 @@ $(document).on("click", "#updater", function() {
     }
   });
 });
-
-
