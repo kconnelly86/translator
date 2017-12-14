@@ -40,7 +40,7 @@ app.get("/", function(req, res) {
 
 // Handle form submission, save submission to mongo
 app.post("/submit", function(req, res) {
-  console.log(req.body);
+  // console.log(req.body); 
   // Insert the translation into the translations collection
   db.translations.insert(req.body, function(error, saved) {
     // Log any errors
@@ -91,7 +91,6 @@ app.get("/find/:id", function(req, res) {
     // Otherwise, send the translation to the browser
     // This will fire off the success function of the ajax request
     else {
-      console.log(found);
       res.send(found);
     }
   });

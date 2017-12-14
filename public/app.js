@@ -109,7 +109,7 @@ $(document).on("click", ".deleter", function() {
   });
 });
 
-// When user click's on translation translate, show the translation, and allow for updates
+// When user click's on translation, show the translation, and allow for updates
 $(document).on("click", ".datatranslate", function() {
   // Grab the element
   var selected = $(this);
@@ -135,7 +135,7 @@ $(document).on("click", "#updater", function() {
   var selected = $(this);
   // Make an AJAX POST request
   // This uses the data-id of the update button,
-  // which is linked to the specific translation translate
+  // which is linked to the specific translation
   // that the user clicked before
   $.ajax({
     type: "POST",
