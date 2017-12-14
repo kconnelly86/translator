@@ -41,13 +41,13 @@ app.get("/", function(req, res) {
 // Handle form submission, save submission to mongo
 app.post("/submit", function(req, res) {
   console.log(req.body);
-  // Insert the note into the translations collection
+  // Insert the translation into the translations collection
   db.translations.insert(req.body, function(error, saved) {
     // Log any errors
     if (error) {
       console.log(error);
     }
-    // Otherwise, send the note back to the browser
+    // Otherwise, send the translation back to the browser
     // This will fire off the success function of the ajax request
     else {
       console.log(saved);
@@ -72,7 +72,7 @@ app.get("/all", function(req, res) {
   });
 });
 
-// Select just one note by an id
+// Select just one translation by an id
 app.get("/find/:id", function(req, res) {
 
   // When searching by an id, the id needs to be passed in
@@ -88,7 +88,7 @@ app.get("/find/:id", function(req, res) {
       console.log(error);
       res.send(error);
     }
-    // Otherwise, send the note to the browser
+    // Otherwise, send the translation to the browser
     // This will fire off the success function of the ajax request
     else {
       console.log(found);
@@ -98,21 +98,21 @@ app.get("/find/:id", function(req, res) {
 });
 
 
-// Update just one note by an id
+// Update just one translation by an id
 app.post("/update/:id", function(req, res) {
   
   // When searching by an id, the id needs to be passed in
   // as (mongojs.ObjectId(IDYOUWANTTOFIND))
 
-  // Update the note that matches the object id
+  // Update the translation that matches the object id
   db.translations.update({
     "_id": mongojs.ObjectId(req.params.id)
   }, {
-    // Set the title, note and modified parameters
+    // Set the translate, translation and modified parameters
     // sent in the req's body.
     $set: {
-      "title": req.body.title,
-      "note": req.body.note,
+      "translate": req.body.translate,
+      "translation": req.body.translation,
       "modified": Date.now()
     }
   }, function(error, edited) {
@@ -133,7 +133,7 @@ app.post("/update/:id", function(req, res) {
 
 // Delete One from the DB
 app.get("/delete/:id", function(req, res) {
-  // Remove a note using the objectID
+  // Remove a translation using the objectID
   db.translations.remove({
     "_id": mongojs.ObjectID(req.params.id)
   }, function(error, removed) {
@@ -154,7 +154,7 @@ app.get("/delete/:id", function(req, res) {
 
 // Clear the DB
 app.get("/clearall", function(req, res) {
-  // Remove every note from the translations collection
+  // Remove every translation from the translations collection
   db.translations.remove({}, function(error, response) {
     // Log any errors to the console
     if (error) {

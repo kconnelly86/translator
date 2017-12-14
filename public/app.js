@@ -8,13 +8,13 @@
 function getResults() {
   // Empty any results currently on the page
   $("#results").empty();
-  // Grab all of the current notes
+  // Grab all of the current translations
   $.getJSON("/all", function(data) {
-    // For each note...
+    // For each translation...
     for (var i = 0; i < data.length; i++) {
-      // ...populate #results with a p-tag that includes the note's title and object id
-      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
-        data[i]._id + ">" + data[i].title + "</span><span class=deleter>X</span></p>");
+      // ...populate #results with a p-tag that includes the translation's translate and object id
+      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='datatranslate' data-id=" +
+        data[i]._id + ">" + data[i].translate + "</span><span class=deleter>X</span></p>");
     }
   });
 }
@@ -32,18 +32,18 @@ $(document).on("click", "#makenew", function() {
     dataType: "json",
     url: "/submit",
     data: {
-      title: $("#translate").val(),
-      note: $("#translation").val(),
+      translate: $("#translate").val(),
+      translation: $("#translation").val(),
       created: Date.now()
     }
   })
-  // If that API call succeeds, add the title and a delete button for the note to the page
+  // If that API call succeeds, add the translate and a delete button for the translation to the page
   .done(function(data) {
   
-    // Add the title and delete button to the #results section
-    $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
-      data._id + ">" + data.title + "</span><span class=deleter>X</span></p>");
-    // Clear the note and title inputs on the page
+    // Add the translate and delete button to the #results section
+    $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='datatranslate' data-id=" +
+      data._id + ">" + data.translate + "</span><span class=deleter>X</span></p>");
+    // Clear the translation and translate inputs on the page
     $("#translation").val("");
     $("#translate").val("");
    
@@ -51,7 +51,7 @@ $(document).on("click", "#makenew", function() {
 
     
     
-    searchQuery = data.title;
+    searchQuery = data.translate;
     queryAPI = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDfyQpiTmaKJG9ri-xKSX_wnG5f2MUY6TY&target=es&q=" + searchQuery;
     $.ajax({
     type: "GET",
@@ -73,7 +73,7 @@ $(document).on("click", "#makenew", function() {
 // When the #clearall button is pressed
 $("#clearall").on("click", function() {
 
-  // Make an AJAX GET request to delete the notes from the db
+  // Make an AJAX GET request to delete the translations from the db
   $.ajax({
     type: "GET",
     dataType: "json",
@@ -86,12 +86,12 @@ $("#clearall").on("click", function() {
 });
 
 
-// When user clicks the deleter button for a note
+// When user clicks the deleter button for a translation
 $(document).on("click", ".deleter", function() {
   // Save the p tag that encloses the button
   var selected = $(this).parent();
-  // Make an AJAX GET request to delete the specific note
-  // this uses the data-id of the p-tag, which is linked to the specific note
+  // Make an AJAX GET request to delete the specific translation
+  // this uses the data-id of the p-tag, which is linked to the specific translation
   $.ajax({
     type: "GET",
     url: "/delete/" + selected.attr("data-id"),
@@ -100,7 +100,7 @@ $(document).on("click", ".deleter", function() {
     success: function(response) {
       // Remove the p-tag from the DOM
       selected.remove();
-      // Clear the note and title inputs
+      // Clear the translation and translate inputs
       $("#translation").val("");
       $("#translate").val("");
       // Make sure the #actionbutton is submit (in case it's update)
@@ -109,41 +109,41 @@ $(document).on("click", ".deleter", function() {
   });
 });
 
-// When user click's on note title, show the note, and allow for updates
-$(document).on("click", ".dataTitle", function() {
+// When user click's on translation translate, show the translation, and allow for updates
+$(document).on("click", ".datatranslate", function() {
   // Grab the element
   var selected = $(this);
-  // Make an ajax call to find the note
-  // This uses the data-id of the p-tag, which is linked to the specific note
+  // Make an ajax call to find the translation
+  // This uses the data-id of the p-tag, which is linked to the specific translation
   $.ajax({
     type: "GET",
     url: "/find/" + selected.attr("data-id"),
     success: function(data) {
       // Fill the inputs with the data that the ajax call collected
-      $("#translation").val(data.note);
-      $("#translate").val(data.title);
+      $("#translation").val(data.translation);
+      $("#translate").val(data.translate);
       // Make the #actionbutton an update button, so user can
-      // Update the note s/he chooses
+      // Update the translation s/he chooses
       $("#actionbutton").html("<button id='updater' data-id='" + data._id + "'>Update</button>");
     }
   });
 });
 
-// When user click's update button, update the specific note
+// When user click's update button, update the specific translation
 $(document).on("click", "#updater", function() {
   // Save the selected element
   var selected = $(this);
   // Make an AJAX POST request
   // This uses the data-id of the update button,
-  // which is linked to the specific note title
+  // which is linked to the specific translation translate
   // that the user clicked before
   $.ajax({
     type: "POST",
     url: "/update/" + selected.attr("data-id"),
     dataType: "json",
     data: {
-      title: $("#translate").val(),
-      note: $("#translation").val()
+      translate: $("#translate").val(),
+      translation: $("#translation").val()
     },
     // On successful call
     success: function(data) {
