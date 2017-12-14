@@ -3,6 +3,7 @@
  * ==================== */
  var searchQuery;
  var queryAPI;
+ var lang;
 
 // Loads results onto the page
 function getResults() {
@@ -52,7 +53,7 @@ $(document).on("click", "#makenew", function() {
     
     
     searchQuery = data.translate;
-    queryAPI = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDfyQpiTmaKJG9ri-xKSX_wnG5f2MUY6TY&target=es&q=" + searchQuery;
+    queryAPI = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDfyQpiTmaKJG9ri-xKSX_wnG5f2MUY6TY&target=" + lang +"&q=" + searchQuery;
     $.ajax({
     type: "GET",
     dataType: "json",
@@ -69,6 +70,13 @@ $(document).on("click", "#makenew", function() {
   }
   );
 });
+
+
+    $("select#selectLang").change(function(){
+        lang = $("#selectLang option:selected").val();
+        console.log("You have selected the country - " + lang);
+    });
+
 
 // When the #clearall button is pressed
 $("#clearall").on("click", function() {
@@ -157,3 +165,5 @@ $(document).on("click", "#updater", function() {
     }
   });
 });
+
+
