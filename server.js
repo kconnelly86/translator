@@ -42,7 +42,7 @@ app.get("/", function(req, res) {
 app.post("/submit", function(req, res) {
   // console.log(req.body); 
   // Insert the translation into the translations collection
-  db.translations.insert(req.body, function(error, saved) {
+  db.translations.insert(req.body, function(error, saved) { 
     // Log any errors
     if (error) {
       console.log(error);

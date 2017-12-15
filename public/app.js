@@ -29,11 +29,6 @@ $(document).on("click", "#makenew", function() {
 
   // AJAX POST call to the submit route on the server
   // This will take the data from the form and send it to the server
-
-
-
-
-
     searchQuery = $("#translate").val();
     queryAPI = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDfyQpiTmaKJG9ri-xKSX_wnG5f2MUY6TY&target=" + lang +"&q=" + searchQuery;
     $.ajax({
@@ -77,7 +72,7 @@ $(document).on("click", "#makenew", function() {
 
 });
 
-
+  // dropdown menu
     $("select#selectLang").change(function(){
         lang = $("#selectLang option:selected").val();
         console.log("You have selected the country - " + lang);
