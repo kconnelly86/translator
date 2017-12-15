@@ -1,59 +1,65 @@
 body {
-        text-align: center;
-        background-color: cornflowerblue;
-      }
-      h1 {
-        font-size: 40px;
-        color: white;
-      }
-      .deleter {
-        margin-left: 20px;
-        margin-right: 20px;
-        color: red;
-        cursor: pointer;
-        text-align: right;
-      }
-      
-      #userinput{
-        float:left;
-      }
-      #response{
-        float:right;
-      }
-      textarea {
-        width: 400px;
-        height: 400px;
-        overflow: auto;
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 24px;
-        background-color: antiquewhite;
-
-      }
-      .dataTitle {
-        cursor: pointer;
-        font-size: 24px;
-      }
-      #translation{
-        width: 400px;
-        height: 400px;
-        overflow: auto;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: antiquewhite;
-        font-size: 24px;
-      }
-      #results {
-        width: 95%;
-        height: 150px;
-        overflow: auto;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: antiquewhite;
-      }
-      #actionbutton {
-        display: inline-block;
-      }
-      #buttons {
-        margin: 20px;
-      }
+text-align: center;
+background-color: cornflowerblue;
+}
+h1 {
+font-size: 40px;
+color: white;
+}
+.deleter {
+color: red;
+cursor: pointer;
+text-align: right;
+}
+#userinput{
+float:left;
+}
+#response{
+float:right;
+}
+textarea {
+width: 400px;
+height: 400px;
+overflow: auto;
+margin-left: auto;
+margin-right: auto;
+font-size: 24px;
+background-color: antiquewhite;
+}
+.datatranslate {
+cursor: pointer;
+font-size: 16px;
+margin-right: 15px;
+}
+.datatranslation{
+cursor: pointer;
+font-size: 16px;
+margin-left: 15px;
+}
+.langFull{
+  cursor: pointer;
+  margin-left: 20px;
+}
+#translation{
+width: 400px;
+height: 400px;
+overflow: auto;
+margin-left: auto;
+margin-right: auto;
+background-color: antiquewhite;
+font-size: 24px;
+}
+#results {
+width: 95%;
+height: 150px;
+overflow: auto;
+margin-left: auto;
+margin-right: auto;
+background-color: antiquewhite;
+}
+#actionbutton {
+display: inline-block;
+}
+#buttons {
+margin: 20px;
+}

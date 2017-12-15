@@ -5,7 +5,7 @@
  var queryAPI;
  var lang;
  var theTranslation;
- 
+ var langFull;
 
 // Loads results onto the page
 function getResults() {
@@ -18,7 +18,8 @@ function getResults() {
       // ...populate #results with a p-tag that includes the translation's translate and object id
       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='datatranslate' data-id=" +
         data[i]._id + ">" + data[i].translate + "</span> <span class=deleter>X</span> <span class='datatranslation' data-id=" +
-        data[i]._id + ">" + data[i].translation + "</span></p>");
+        data[i]._id + ">" + data[i].translation + "</span> <span class='datatranslation' data-id=" +
+        data[i]._id + ">" + data[i].langFull + "</span> </p>");
     }
   });
 }
@@ -53,6 +54,7 @@ $(document).on("click", "#makenew", function() {
        data: {
          translate: $("#translate").val(),
          translation: theTranslation,
+         langFull: langFull,
 
          created: Date.now()
        }
@@ -63,7 +65,8 @@ $(document).on("click", "#makenew", function() {
        // Add the translate and delete button to the #results section, "what was to be translated and the x".
        $("#results").prepend("<p class='dataentry' data-id=" + data._id + "> <span class='datatranslate' data-id=" +
          data._id + ">" + data.translate + "</span> <span class=deleter>X</span> <span class='datatranslation' data-id=" +
-         data._id + "> " + theTranslation + " </span></p>");
+         data._id + "> " + theTranslation + " </span> <span class='langFull' data-id=" +
+         data._id + "> " + langFull + " </span> </p>");
 
        // Clear the translation and translate inputs on the page
        // $("#translation").val(""); this can be commented out or in and it has no affect since other code had been implemented to make the translation stay in the window.
@@ -76,9 +79,12 @@ $(document).on("click", "#makenew", function() {
 });
 
   // dropdown menu
+  
+
     $("select#selectLang").change(function(){
         lang = $("#selectLang option:selected").val();
         console.log("You have selected the country - " + lang);
+        langFull = $("#selectLang option:selected").text();
     });
 
 
