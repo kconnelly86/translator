@@ -50,9 +50,6 @@ app.post("/submit", function(req, res) {
     // Otherwise, send the translation back to the browser
     // This will fire off the success function of the ajax request
     else {
-      console.log("saved");
-      console.log(saved);
-      console.log("saved");
       res.send(saved);
     }
   });
@@ -98,38 +95,6 @@ app.get("/find/:id", function(req, res) {
     // This will fire off the success function of the ajax request
     else {
       res.send(found);
-    }
-  });
-});
-
-// Update just one translation by an id
-app.post("/update/:id", function(req, res) {
-  
-  // When searching by an id, the id needs to be passed in
-  // as (mongojs.ObjectId(IDYOUWANTTOFIND))
-
-  // Update the translation that matches the object id
-  db.translations.update({
-    "_id": mongojs.ObjectId(req.params.id)
-  }, {
-    // Set the translate, translation and modified parameters
-    // sent in the req's body.
-    $set: {
-      "translate": req.body.translate,
-      "translation": req.body.translation,
-      "modified": Date.now()
-    }
-  }, function(error, edited) {
-    // Log any errors from mongojs
-    if (error) {
-      console.log(error);
-      res.send(error);
-    }
-    // Otherwise, send the mongojs response to the browser
-    // This will fire off the success function of the ajax request
-    else {
-      console.log(edited);
-      res.send(edited);
     }
   });
 });

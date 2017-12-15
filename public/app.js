@@ -5,6 +5,7 @@
  var queryAPI;
  var lang;
  var theTranslation;
+ 
 
 // Loads results onto the page
 function getResults() {
@@ -131,6 +132,7 @@ $(document).on("click", ".datatranslate",  function() {
     type: "GET",
     url: "/find/" + selected.attr("data-id"),
     success: function(data) {
+
       // Fill the inputs with the data that the ajax call collected
       $("#translation").text(data.translation);
       
@@ -142,31 +144,3 @@ $(document).on("click", ".datatranslate",  function() {
   });
 });
 
-// When user click's update button, update the specific translation
-$(document).on("click", "#updater", function() {
-  // Save the selected element
-  var selected = $(this);
-  // Make an AJAX POST request
-  // This uses the data-id of the update button,
-  // which is linked to the specific translation
-  // that the user clicked before
-  $.ajax({
-    type: "POST",
-    url: "/update/" + selected.attr("data-id"),
-    dataType: "json",
-    data: {
-      translate: $("#translate").val(),
-      translation: $("#translation").val()
-    },
-    // On successful call
-    success: function(data) {
-      // Clear the inputs
-      $("#translation").val("");
-      $("#translate").val("");
-      // Revert action button to submit
-      $("#actionbutton").html("<button id='makenew'>Submit</button>");
-      // Grab the results from the db again, to populate the DOM
-      getResults();
-    }
-  });
-});
