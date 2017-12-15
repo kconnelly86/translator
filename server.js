@@ -1,4 +1,4 @@
-/* Translator (18.2.6)
+/* Translator 
  * backend
  * ==================== */
 
@@ -38,9 +38,9 @@ app.get("/", function(req, res) {
   res.send(index.html);
 });
 
+//this section doesnt affect the translation aspect, it affects the send to the database. HAVE TO HAVE
 // Handle form submission, save submission to mongo
-app.post("/submit", function(req, res) {
-  // console.log(req.body); 
+app.post("/submit", function(req, res) { 
   // Insert the translation into the translations collection
   db.translations.insert(req.body, function(error, saved) { 
     // Log any errors
@@ -50,12 +50,16 @@ app.post("/submit", function(req, res) {
     // Otherwise, send the translation back to the browser
     // This will fire off the success function of the ajax request
     else {
+      console.log("saved");
       console.log(saved);
+      console.log("saved");
       res.send(saved);
     }
   });
 });
 
+
+//if you dont have this it wont populate your results box from your database in local host. HAVE TO HAVE
 // Retrieve results from mongo
 app.get("/all", function(req, res) {
   // Find all translations in the translations collection
@@ -67,11 +71,13 @@ app.get("/all", function(req, res) {
     // Otherwise, send json of the translations back to user
     // This will fire off the success function of the ajax request
     else {
+      console.log("retrieving" + JSON.stringify(found));
       res.json(found);
+      
     }
   });
 });
-
+// must have to find one/ and update the front end and populate 
 // Select just one translation by an id
 app.get("/find/:id", function(req, res) {
 
@@ -95,7 +101,6 @@ app.get("/find/:id", function(req, res) {
     }
   });
 });
-
 
 // Update just one translation by an id
 app.post("/update/:id", function(req, res) {

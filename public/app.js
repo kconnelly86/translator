@@ -1,4 +1,4 @@
-/* Translator (18.2.6)
+/* Translator 
  * front-end
  * ==================== */
  var searchQuery;
@@ -11,12 +11,13 @@ function getResults() {
   // Empty any results currently on the page
   $("#results").empty();
   // Grab all of the current translations
-  $.getJSON("/all", function(data) {
+  $.getJSON("/all", function(data) { console.log(data);
     // For each translation...
     for (var i = 0; i < data.length; i++) {
       // ...populate #results with a p-tag that includes the translation's translate and object id
       $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='datatranslate' data-id=" +
-        data[i]._id + ">" + data[i].translate + "</span><span class=deleter>X</span></p>");
+        data[i]._id + ">" + data[i].translate + "</span> <span class=deleter>X</span> <span class='datatranslation' data-id=" +
+        data[i]._id + ">" + data[i].translation + "</span></p>");
     }
   });
 }
@@ -38,8 +39,6 @@ $(document).on("click", "#makenew", function() {
     // On a successful call, clear the #results section
     success: function(response) {
        console.log(response);
-      // console.log("response");
-      //console.log(response);
       theTranslation = response.data.translations[0].translatedText;
       console.log(response.data.translations[0].translatedText);
       $("#translation").text(response.data.translations[0].translatedText);
@@ -53,18 +52,21 @@ $(document).on("click", "#makenew", function() {
        data: {
          translate: $("#translate").val(),
          translation: theTranslation,
+
          created: Date.now()
        }
      })
      // If that API call succeeds, add the translate and a delete button for the translation to the page
      .done(function(data) {
 
-       // Add the translate and delete button to the #results section
-       $("#results").prepend("<p class='dataentry' data-id=" + data._id + "><span class='datatranslate' data-id=" +
-         data._id + ">" + data.translate + "</span><span class=deleter>X</span></p>");
+       // Add the translate and delete button to the #results section, "what was to be translated and the x".
+       $("#results").prepend("<p class='dataentry' data-id=" + data._id + "> <span class='datatranslate' data-id=" +
+         data._id + ">" + data.translate + "</span> <span class=deleter>X</span> <span class='datatranslation' data-id=" +
+         data._id + "> " + theTranslation + " </span></p>");
+
        // Clear the translation and translate inputs on the page
-       $("#translation").val("");
-       // $("#translate").val("");
+       // $("#translation").val(""); this can be commented out or in and it has no affect since other code had been implemented to make the translation stay in the window.
+       // $("#translate").val(""); if this is commented in it will clear the translate field after submission and we dont want that.
    }
    );
 
@@ -119,7 +121,8 @@ $(document).on("click", ".deleter", function() {
 });
 
 // When user click's on translation, show the translation, and allow for updates
-$(document).on("click", ".datatranslate", function() {
+$(document).on("click", ".datatranslate",  function() {
+  console.log("working");
   // Grab the element
   var selected = $(this);
   // Make an ajax call to find the translation
@@ -130,7 +133,7 @@ $(document).on("click", ".datatranslate", function() {
     success: function(data) {
       // Fill the inputs with the data that the ajax call collected
       $("#translation").text(data.translation);
-      console.log("data.translation: " + data.translation);
+      
       $("#translate").val(data.translate);
       // Make the #actionbutton an update button, so user can
       // Update the translation s/he chooses
