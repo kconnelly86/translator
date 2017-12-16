@@ -16,10 +16,10 @@ function getResults() {
     // For each translation...
     for (var i = 0; i < data.length; i++) {
       // ...populate #results with a p-tag that includes the translation's translate and object id
-      $("#results").prepend("<p class='dataentry' data-id=" + data[i]._id + "><span class='datatranslate' data-id=" +
-        data[i]._id + ">" + data[i].translate + "</span> <span class=deleter>X</span> <span class='datatranslation' data-id=" +
+      $("#results").prepend("<div id='cont1' data-id=" + data[i]._id + ">" + "<p class='dataentry' data-id=" + data[i]._id + "><span class='datatranslate' data-id=" + data[i]._id + ">" + data[i].translate + "</span> <span class=deleter>X</span> <span class='datatranslation' data-id=" +
         data[i]._id + ">" + data[i].translation + "</span> <span class='datatranslation' data-id=" +
-        data[i]._id + ">" + data[i].langFull + "</span> </p>");
+        data[i]._id + ">" + data[i].langFull + "</span> </p>" + "</div>");
+      console.log(data[i]._id);
     }
   });
 }
@@ -55,7 +55,6 @@ $(document).on("click", "#makenew", function() {
          translate: $("#translate").val(),
          translation: theTranslation,
          langFull: langFull,
-
          created: Date.now()
        }
      })
@@ -105,6 +104,7 @@ $("#clearall").on("click", function() {
 
 
 // When user clicks the deleter button for a translation
+//$('#cont1', '.datatranslate', 'datatranslation').on('click', function(){})
 $(document).on("click", ".deleter", function() {
   // Save the p tag that encloses the button
   var selected = $(this).parent();
@@ -128,8 +128,7 @@ $(document).on("click", ".deleter", function() {
 });
 
 // When user click's on translation, show the translation, and allow for updates
-$(document).on("click", ".datatranslate",  function() {
-  console.log("working");
+$(document).on("click", "#cont1",  function() {
   // Grab the element
   var selected = $(this);
   // Make an ajax call to find the translation
