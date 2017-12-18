@@ -70,19 +70,15 @@ margin-right: auto;
 font-family: 'Quattrocento Sans', sans-serif;
 border: 1px solid black;
 }
+/*all buttons rounded edges*/
 button{
 border-radius: 6px;
 }
+/*delete all button*/
 #clearall{
 background-color: red;
 }
+/*Submit button*/
 #makenew{
 background-color: green;
 }
-
-
-
-
-
-
-
