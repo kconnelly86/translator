@@ -1,0 +1,65 @@
+body{
+text-align: center;
+}
+h1 {
+font-size: 40px;
+text-align: center;
+font-family: 'EB Garamond', serif;
+}
+h3{
+font-family: 'EB Garamond', serif;
+}
+.deleter {
+color: red;
+cursor: pointer;
+text-align: right;
+}
+#translate{
+margin-left: auto;
+margin-right: auto;
+font-size: 16px;
+width: 400px;
+height: 200px;
+font-family: 'Quattrocento Sans', sans-serif;
+overflow: auto;
+border:1px solid black;
+}
+.datatranslate {
+cursor: pointer;
+font-size: 16px;
+margin-right: 15px;
+}
+.datatranslation{
+cursor: pointer;
+font-size: 16px;
+margin-left: 15px;
+}
+.langFull{
+cursor: pointer;
+margin-left: 20px;
+}
+#translation{
+font-size: 16px;
+width: 400px;
+height: 200px;
+overflow: auto;
+margin-left: auto;
+margin-right: auto;
+border:1px solid black;
+font-family: 'Quattrocento Sans', sans-serif;
+}
+#transh3{
+text-align: center;
+}
+#results {
+width: 95%;
+height: 150px;
+overflow: auto;
+margin-left: auto;
+margin-right: auto;
+font-family: 'Quattrocento Sans', sans-serif;
+border: 1px solid black;
+}
+#buttons{
+text-align: center;
+}
