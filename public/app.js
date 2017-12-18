@@ -67,9 +67,9 @@ $(document).on("click", "#makenew", function() {
          data._id + "> " + theTranslation + " </span> <span class='langFull' data-id=" +
          data._id + "> " + langFull + " </span> </p>");
 
-       // Clear the translation and translate inputs on the page
-       // $("#translation").val(""); this can be commented out or in and it has no affect since other code had been implemented to make the translation stay in the window.
-       // $("#translate").val(""); if this is commented in it will clear the translate field after submission and we dont want that.
+       // // Clear the translation and translate inputs on the page
+       // $("#translation").val(""); //this can be commented out or in and it has no affect since other code had been implemented to make the translation stay in the window.
+       // $("#translate").val(""); //if this is commented in it will clear the translate field after submission and we dont want that.
    }
    );
 
@@ -148,4 +148,13 @@ $(document).on("click", "#cont1",  function() {
     }
   });
 });
+// reseting the page without having to refresh everytime.
+function myFunction() {
+    $('#translation').empty();
+    $('#translate').val("");
+    
+}
+
+
+
 

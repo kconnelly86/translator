@@ -1,19 +1,23 @@
 body{
 text-align: center;
 }
+/*Translator*/
 h1 {
 font-size: 40px;
 text-align: center;
 font-family: 'EB Garamond', serif;
 }
+/*Translate and Translation*/
 h3{
 font-family: 'EB Garamond', serif;
 }
+/*Red X*/
 .deleter {
 color: red;
 cursor: pointer;
 text-align: right;
 }
+/*Text to be translated*/
 #translate{
 margin-left: auto;
 margin-right: auto;
@@ -24,35 +28,41 @@ font-family: 'Quattrocento Sans', sans-serif;
 overflow: auto;
 border:1px solid black;
 }
+/*translated text*/
+#translation{
+margin-left: auto;
+margin-right: auto;
+font-size: 16px;
+width: 400px;
+height: 200px;
+font-family: 'Quattrocento Sans', sans-serif;
+overflow: auto;
+border:1px solid black;
+}
+/*text to the left of the red X*/
 .datatranslate {
 cursor: pointer;
 font-size: 16px;
 margin-right: 15px;
 }
+/*text to the right of the red X*/
 .datatranslation{
 cursor: pointer;
 font-size: 16px;
 margin-left: 15px;
 }
+/*languaget name to the right of the translation*/
 .langFull{
 cursor: pointer;
 margin-left: 20px;
 }
-#translation{
-font-size: 16px;
-width: 400px;
-height: 200px;
-overflow: auto;
-margin-left: auto;
-margin-right: auto;
-border:1px solid black;
-font-family: 'Quattrocento Sans', sans-serif;
-}
-#transh3{
+/*responses inside the results container*/
+#response{
 text-align: center;
 }
+/*the container for saved translations*/
 #results {
-width: 95%;
+width: 75%;
 height: 150px;
 overflow: auto;
 margin-left: auto;
@@ -60,6 +70,19 @@ margin-right: auto;
 font-family: 'Quattrocento Sans', sans-serif;
 border: 1px solid black;
 }
-#buttons{
-text-align: center;
+button{
+border-radius: 6px;
 }
+#clearall{
+background-color: red;
+}
+#makenew{
+background-color: green;
+}
+
+
+
+
+
+
+
