@@ -135,3 +135,8 @@ $('#translation').empty();
 $('#translate').val("");
 
 }
+
+
+
+
+
