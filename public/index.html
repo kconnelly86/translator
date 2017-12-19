@@ -28,20 +28,20 @@
         <!-- <div id="translation"></div> -->
         <textarea id="translation"></textarea>
       </div>
+
       <!-- button to reset the page without refreshing -->
-      
-      <input id="buttons" type="button" onclick="myFunction()" value="Reset Form">
+      <button id="buttons" type="button" onclick="myFunction()">Reset Form</button>
       
     </form>
     <br>
-    <div id="buttons">
+    <div id="btns">
       <div id="actionbutton">
         <button id="makenew">Submit</button>
       </div>
     </div>
     <!-- drop down menu -->
     <select id="selectLang" class="tw-lang-selector vk_txt" data-dslc="" data-dsln="" data-uiln="English" data-url="/setprefs?sig=0__C7lEYSuvCM5rAc5GKZ_RhYC7HY%3D&amp;prev=https://www.google.com/search?q%3Dgoogle%2Btranslate%26oq%3Dgoogle%2Btranslate%26aqs%3Dchrome..69i57j0l5.1998j0j1%26sourceid%3Dchrome%26ie%3DUTF-8"
-      id="tw-sl" data-dlm="Detect language" jsaction="change:tob.lc" data-ved="0ahUKEwi18-6ynYrYAhUUTmMKHV8sAm0Q8TQILDAA" style="width: 137px;">
+       data-dlm="Detect language" jsaction="change:tob.lc" data-ved="0ahUKEwi18-6ynYrYAhUUTmMKHV8sAm0Q8TQILDAA" style="width: 137px;">
       <option value="---" disabled="">---------------</option>
       <option selected="1" value="auto" id="tw-dslo">Select Language</option>
       <option value="af">Afrikaans</option>
@@ -149,13 +149,12 @@
       <option value="yo">Yoruba</option>
       <option value="zu">Zulu</option>
     </select>
-    <div id="buttons">
+    
       <div id="actionbutton">
         <button id="clearall">Delete All Translations</button>
       </div>
       <div id="results"></div>
-      
-    </div>
+    
     <div id="emptydiv"></div>
     <script src="app.js"></script>  
   </body>

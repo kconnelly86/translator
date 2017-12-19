@@ -83,15 +83,63 @@ width: 100%;
 /*all buttons rounded edges*/
 button, #buttons{
 border-radius: 6px;
+background:none;
+color:white;
+padding:10px 15px;
+font-size:16px;
+transition: .2s ease-in-out;
 }
+
+
 /*delete all button*/
 #clearall{
 background-color: red;
+border:1px solid red;
+border-radius: 6px;
+color:white;
+padding:10px 15px;
+font-size:16px;
+transition: .2s ease-in-out;
+margin: 2% 0% 2% 0%;
+}
+
+#clearall:hover{
+background:none;
+border:1px solid red;
+color:red;
+transition: .2s ease-in-out;
+}
+/*-----------------------------------*/
+
+#buttons{
+  margin: 2% 0% 0% 0%;
+}
+
+#buttons:hover{
+  background: white;
+  color: black;
+  transition: .2s ease-in-out;
+
 }
 /*Submit button*/
 #makenew{
 background-color: green;
+border:1px solid green;
+border-radius: 6px;
+color:white;
+padding:10px 15px;
+font-size:16px;
+transition: .2s ease-in-out;
+margin: 0% 0% 2% 0%;
 }
+
+#makenew:hover{
+background:none;
+border:1px solid green;
+color:green;
+transition: .2s ease-in-out;
+}
+/*-------------------------------*/
 
 
 /*title, keyframe animation*/
@@ -120,7 +168,6 @@ html, body {
   height: 600px;
   background: radial-gradient(ellipse at bottom, #090a0f 0%, #090a0f 100%);
   overflow: visible;
-  /*background-repeat: no-repeat;	*/
 }
 
 #stars {
@@ -181,6 +228,6 @@ html, body {
     transform: translateY(0px);
   }
   to {
-    transform: translateY(-7000px);
+    transform: translateY(-5000px);
   }
 }
