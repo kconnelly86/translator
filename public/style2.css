@@ -8,8 +8,8 @@ font-size: 40px;
 text-align: center;
 font-family: "Star Jedi Hollow";
 color: yellow;
-/*font-family: 'EB Garamond', serif;*/
 }
+/*end of translator*/
 /*Translate and Translation*/
 h3{
 font-family: "Star Jedi Hollow", serif;
@@ -19,56 +19,68 @@ strong{
 font-family: "Star Jedi Hollow", serif;
 color: yellow;
 }
+/*end of Translate and Translation ==============*/
 /*Red X*/
 .deleter {
 color: red;
 cursor: pointer;
 text-align: right;
 }
+/*end of Red X===========================*/
 /*Text to be translated*/
-#translate{
+#userinput{
+float: left;
 margin-left: auto;
 margin-right: auto;
+padding:10px;
 font-size: 16px;
 width: 400px;
 height: 200px;
 font-family: 'Quattrocento Sans', sans-serif;
 overflow: auto;
-border:1px solid black;
+
 }
-/*translated text*/
-#translation{
+/*end of Text to be translated====================*/
+textarea{
+width:100%;
+height:100%;
+}
+/*Translated text*/
+#response{
+float: right;
 margin-left: auto;
 margin-right: auto;
+padding:10px;
 font-size: 16px;
 width: 400px;
 height: 200px;
 font-family: 'Quattrocento Sans', sans-serif;
 overflow: auto;
-border:1px solid black;
 }
+textarea{
+width:100%;
+height:100%;
+}
+/*end of Translated text=============================*/
 /*text to the left of the red X*/
 .datatranslate {
 cursor: pointer;
 font-size: 16px;
 margin-right: 15px;
 }
+/*tend of ext to the left of the red X*/
 /*text to the right of the red X*/
 .datatranslation{
 cursor: pointer;
 font-size: 16px;
 margin-left: 15px;
 }
-/*languaget name to the right of the translation*/
+/*end of text to the right of the red X*/
+/*language name to the right of the translation*/
 .langFull{
 cursor: pointer;
 margin-left: 20px;
 }
-/*responses inside the results container*/
-#response{
-text-align: center;
-}
-/*the container for saved translations*/
 #results {
 width: 75%;
 height: 150px;
@@ -80,6 +92,7 @@ border: 1px solid rgba(0, 0, 0, 0);
 background-color: rgba(0, 0, 0, 0);
 color: white;
 }
+/*end of the container for saved translations*/
 #emptydiv{
 height: 10%;
 width: 100%;
@@ -93,6 +106,7 @@ padding:10px 15px;
 font-size:16px;
 transition: .2s ease-in-out;
 }
+/*end of all buttons rounded edges*/
 /*delete all button*/
 #clearall{
 background-color: red;
@@ -110,9 +124,13 @@ border:1px solid red;
 color:red;
 transition: .2s ease-in-out;
 }
-/*-----------------------------------*/
+/* end delete all button-----------------------------------*/
 #buttons{
 margin: 2% 0% 0% 0%;
+}
+#btns{
+width:20%;
+margin:auto;
 }
 #buttons:hover{
 background: white;
@@ -142,7 +160,7 @@ background:none;
 color:white;
 padding:10px 15px;
 font-size:14px;
- height: 40px;
+height: 40px;
 }
 /*-------------------------------*/
 /*id for the instructions only not the div*/
@@ -151,7 +169,7 @@ color:white;
 width: 75%;
 margin-left: auto;
 margin-right: auto;
-text-align: left;
+/*text-align: left;*/
 }
 
 /*title, keyframe animation*/

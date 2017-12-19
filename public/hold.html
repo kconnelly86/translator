@@ -30,12 +30,10 @@
 
 <!-- Translate and Translation boxes and all buttons except the Delete all button and drop down ============================================ -->
     <form id="myForm">
-       <!-- <h3 id="trans1">Translate</h3> -->
       <div id="userinput">
-       <h3 id="transh3">Translate</h3>
+        <h3 id="transh3">Translate</h3>
         <textarea id="translate" placeholder="What Would You Like To Translate?"></textarea>
       </div>
-      <!-- <h3 id="trans2">Translation</h3> -->
       <div id="response">
         <h3 id="transh3">Translation</h3>
         <textarea id="translation"></textarea>
@@ -44,7 +42,7 @@
 
     <!-- Drop Down Menu =====================================================================================================================-->
     <div id="btns">
-    <select id="selectLang" class="tw-lang-selector vk_txt" data-dslc="" data-dsln="" data-uiln="English" data-url="/setprefs?sig=0__C7lEYSuvCM5rAc5GKZ_RhYC7HY%3D&amp;prev=https://www.google.com/search?q%3Dgoogle%2Btranslate%26oq%3Dgoogle%2Btranslate%26aqs%3Dchrome..69i57j0l5.1998j0j1%26sourceid%3Dchrome%26ie%3DUTF-8"
+    <select class="selectLang" class="tw-lang-selector vk_txt" data-dslc="" data-dsln="" data-uiln="English" data-url="/setprefs?sig=0__C7lEYSuvCM5rAc5GKZ_RhYC7HY%3D&amp;prev=https://www.google.com/search?q%3Dgoogle%2Btranslate%26oq%3Dgoogle%2Btranslate%26aqs%3Dchrome..69i57j0l5.1998j0j1%26sourceid%3Dchrome%26ie%3DUTF-8"
        data-dlm="Detect language" jsaction="change:tob.lc" data-ved="0ahUKEwi18-6ynYrYAhUUTmMKHV8sAm0Q8TQILDAA">
       <option value="---" disabled="">---------------</option>
       <option selected="1" value="auto" id="tw-dslo">Select Language</option>
@@ -157,18 +155,18 @@
 
       
       <!-- Button to reset the page without refreshing =====================================================================================-->
-    <!-- <div id="btns"> -->
-      <button id="buttons" type="button" onclick="myFunction()">Reset</button><br>
+    
+      <button id="buttons" type="button" onclick="myFunction()">Reset Form</button><br>
     <!-- End of Button to reset the page without refreshing===================================================================================== -->
     <br>
       <div id="actionbutton">
         <button id="makenew">Submit</button>
       </div>
-      <br>
+    <br>
     <!-- Delete Button ===================================================================================================================-->
-      <div id="actionbutton">
-        <button id="clearall">Delete</button>
-      </div>
+    <div id="actionbutton">
+        <button id="clearall">Delete All Translations</button>
+    </div>
     </div>
       <!-- End of Translate and Translation boxes and all buttons and drop down================================================================= -->
 
