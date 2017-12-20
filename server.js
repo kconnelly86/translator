@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var app = express();
 var port = process.env.PORT || 3000;
-var mongoose = require("mongoose");
+// var mongoose = require("mongoose");
 // Set the app up with morgan, body-parser, and a static folder
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
@@ -17,26 +17,27 @@ extended: false
 app.use(express.static("public"));
 // Database config with mongoose
 // define local mongodb uri
-var databaseUri = "mongodb://localhost/translator";
+// var databaseUri = "mongodb://localhost/translator";
 
-if (process.env.MONGODB_URI) {
-	mongoose.connect(process.env.MONGODB_URI);
-} else {
-	mongoose.connect(databaseUri);
-}
-var db = mongoose.connection;
+// if (process.env.MONGODB_URI) {
+// 	mongoose.connect(process.env.MONGODB_URI);
+// } else {
+// 	mongoose.connect(databaseUri);
+// }
+// var db = mongoose.connection;
 
-db.on('error', function(err) {
-	console.log('Mongoose Error: ', err);
-});
+// db.on('error', function(err) {
+// 	console.log('Mongoose Error: ', err);
+// });
 
-db.once('open', function() {
-	console.log('Mongoose connection successful. ');
-});
+// db.once('open', function() {
+// 	console.log('Mongoose connection successful. ');
+// });
 
 
 // Database configuration
-var databaseUrl = "translator";
+// var databaseUrl = "translator";
+var databaseUrl = "heroku_7sr5fs6d";
 var collections = ["translations"];
 // Hook mongojs config to db variable
 var db = mongojs(databaseUrl, collections);
