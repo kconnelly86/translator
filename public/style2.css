@@ -33,7 +33,7 @@ float: left;
 margin-left: auto;
 margin-right: auto;
 padding:10px;
-font-size: 16px;
+
 width: 400px;
 height: 200px;
 font-family: 'Quattrocento Sans', sans-serif;
@@ -44,6 +44,7 @@ overflow: auto;
 textarea{
 width:100%;
 height:100%;
+font-size: 16px;
 }
 /*Translated text*/
 #response{
@@ -51,16 +52,13 @@ float: right;
 margin-left: auto;
 margin-right: auto;
 padding:10px;
-font-size: 16px;
+
 width: 400px;
 height: 200px;
 font-family: 'Quattrocento Sans', sans-serif;
 overflow: auto;
 }
-textarea{
-width:100%;
-height:100%;
-}
+
 /*end of Translated text=============================*/
 /*text to the left of the red X*/
 .datatranslate {
