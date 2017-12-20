@@ -11,7 +11,7 @@ Heroku
 
 ## Built With
 
-* Mongo
+* Mongoose
 * Express
 * Node
 
