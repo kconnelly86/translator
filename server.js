@@ -42,8 +42,15 @@ var databaseUri = "mongodb://localhost/translator";
 var databaseUrl = "mongodb://heroku_7sr5fs6d:au50g130lnkfrb9oiffe0debcj@ds161146.mlab.com:61146/heroku_7sr5fs6ds";
 var collections = ["translations"];
 // Hook mongojs config to db variable
-var db = mongojs(databaseUrl, collections);
+// var db = mongojs(databaseUrl, collections);
+var db = mongoJs(databaseUrl);
 // Log any mongojs errors to console
+
+db.on("connect", function () {
+	console.log("database connected");
+});
+
+
 db.on("error", function(error) {
 console.log("Database Error:", error);
 });
