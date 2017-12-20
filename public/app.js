@@ -49,8 +49,9 @@ url: "/submit",
 data: {
 translate: $("#translate").val(),
 translation: theTranslation,
-langFull: langFull,
-created: Date.now()
+langFull: langFull
+// ,
+// created: Date.now()
 }
 })
 // If that API call succeeds, add the translate and a delete button for the translation to the page
