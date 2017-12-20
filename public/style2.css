@@ -37,7 +37,7 @@ padding:10px;
 width: 400px;
 height: 200px;
 font-family: 'Quattrocento Sans', sans-serif;
-overflow: auto;
+overflow: hidden;
 
 }
 /*end of Text to be translated====================*/
@@ -45,6 +45,7 @@ textarea{
 width:100%;
 height:100%;
 font-size: 16px;
+background-color: white;
 }
 /*Translated text*/
 #response{
@@ -56,7 +57,7 @@ padding:10px;
 width: 400px;
 height: 200px;
 font-family: 'Quattrocento Sans', sans-serif;
-overflow: auto;
+overflow: hidden;
 }
 
 /*end of Translated text=============================*/
