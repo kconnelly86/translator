@@ -43,7 +43,7 @@ var databaseUrl = "mongodb://heroku_7sr5fs6d:au50g130lnkfrb9oiffe0debcj@ds161146
 var collections = ["translations"];
 // Hook mongojs config to db variable
 // var db = mongojs(databaseUrl, collections);
-var db = mongoJs(databaseUrl);
+var db = mongojs(databaseUrl);
 // Log any mongojs errors to console
 
 db.on("connect", function () {
