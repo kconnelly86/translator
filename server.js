@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var app = express();
 var port = process.env.PORT || 3000;
-// var mongoose = require("mongoose");
+var mongoose = require("mongoose");
 // Set the app up with morgan, body-parser, and a static folder
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
@@ -19,39 +19,28 @@ app.use(express.static("public"));
 // define local mongodb uri
 var databaseUri = "mongodb://localhost/translator";
 
-// if (process.env.MONGODB_URI) {
-// 	mongoose.connect(process.env.MONGODB_URI);
-// } else {
-// 	mongoose.connect(databaseUri);
-// }
-// var db = mongoose.connection;
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI);
+} else {
+	mongoose.connect(databaseUri);
+}
+var db = mongoose.connection;
 
-// db.on('error', function(err) {
-// 	console.log('Mongoose Error: ', err);
-// });
+db.on('error', function(err) {
+	console.log('Mongoose Error: ', err);
+});
 
-// db.once('open', function() {
-// 	console.log('Mongoose connection successful. ');
-// });
-
-
-
-// Database configuration
-// to run locally un comment this
-// var databaseUrl = "translator";
-var databaseUrl = "mongodb://heroku_7sr5fs6d:au50g130lnkfrb9oiffe0debcj@ds161146.mlab.com:61146/heroku_7sr5fs6ds?authMechanism=SCRAM-SHA-1";
-// var databaseUrl = "mongodb://kyle:apples86@ds161146.mlab.com:61146/heroku_7sr5fs6ds?authMechanism=SCRAM-SHA-1";
-var collections = ["translations"];
-// Hook mongojs config to db variable
-// var db = mongojs(databaseUrl, collections);
-var db = mongojs(databaseUrl, collections);
-// Log any mongojs errors to console
-
-db.on("connect", function () {
-	console.log("database connected");
+db.once('open', function() {
+	console.log('Mongoose connection successful. ');
 });
 
 
+// Database configuration
+var databaseUrl = "translator";
+var collections = ["translations"];
+// Hook mongojs config to db variable
+var db = mongojs(databaseUrl, collections);
+// Log any mongojs errors to console
 db.on("error", function(error) {
 console.log("Database Error:", error);
 });
