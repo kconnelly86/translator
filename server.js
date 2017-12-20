@@ -40,11 +40,11 @@ var databaseUri = "mongodb://localhost/translator";
 // to run locally un comment this
 // var databaseUrl = "translator";
 // var databaseUrl = "mongodb://heroku_7sr5fs6d:au50g130lnkfrb9oiffe0debcj@ds161146.mlab.com:61146/heroku_7sr5fs6ds";
-var databaseUrl = "mongodb://heroku_7sr5fs6ds:Apples86@ds161146.mlab.com:61146/heroku_7sr5fs6ds";
+var databaseUrl = "mongodb://kyle:apples86@ds161146.mlab.com:61146/heroku_7sr5fs6ds";
 var collections = ["translations"];
 // Hook mongojs config to db variable
 // var db = mongojs(databaseUrl, collections);
-var db = mongojs(databaseUrl);
+var db = mongojs(databaseUrl, collections);
 // Log any mongojs errors to console
 
 db.on("connect", function () {
